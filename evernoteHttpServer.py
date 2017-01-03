@@ -9,7 +9,7 @@ configfile = "./config"
 with open(configfile) as fd:
 	config = json.load(fd)
 
-enClient = evernote.api.client.EvernoteClient(token=config.authToken, sandbox=False)
+enClient = evernote.api.client.EvernoteClient(token=config['authToken'], sandbox=False)
 noteStore = enClient.get_note_store()
 
 def getTags(notestore, nbguid):
@@ -23,7 +23,7 @@ def getNotes(notestore, nbguid):
 	noteMetaResultSpec = evernote.edam.notestore.ttypes.NotesMetadataResultSpec()
 	noteMetaResultSpec.includeTitle = True
 	noteMetaResultSpec.includeTagGuids = True
-	noteFilter.notebookGuid = config.notebookGuid
+	noteFilter.notebookGuid = config['notebookGuid']
 	notes = []
 	#for note in noteStore.findNotes(noteFilter, 0, 200).notes:
 	for note in notestore.findNotesMetadata(noteFilter, 0, 200, noteMetaResultSpec).notes:
@@ -34,8 +34,8 @@ def getNotes(notestore, nbguid):
 		notes.append(n)
 	return notes
 
-tags = getTags(noteStore, config.notebookGuid)
-notes = getNotes(noteStore, config.notebookGuid)
+tags = getTags(noteStore, config['notebookGuid'])
+notes = getNotes(noteStore, config['notebookGuid'])
 
 class EvernoteHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 	# A simple ad-hoc controller
