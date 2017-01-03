@@ -1,0 +1,117 @@
+body {
+	margin: 0px;
+}
+
+div#tagUi, div#noteUi {
+	width: 600px;
+}
+
+div#tagUi {
+	position: fixed;
+	z-index: 1;
+	background-color: white;
+}
+
+div#noteUi {
+	position: absolute;
+	top: 190px;
+}	
+
+svg {
+	background: #fafafa;
+	position: fixed;
+	z-index: -1;
+	left: 600px;
+}
+
+.tagButton {
+	background-color: dodgerblue;
+	padding: 3px;
+	border-radius: 5px;
+	margin: 3px;
+	font-size: smaller;
+	font-family: helvetica;
+	float: left;
+	cursor: default;
+}
+
+.tagButton.highlight {
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	margin: 0px;
+}
+
+.noteButton {
+	background-color: limegreen;
+	padding: 3px;
+	border-radius: 5px;
+	margin: 3px;
+	font-size: smaller;
+	font-family: helvetica;
+	float: left;
+	cursor: default;
+}
+
+.noteButton.highlight {
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	margin: 0px;
+}
+
+.noteButton.orphan {
+	opacity: 0.7;
+}
+
+.note {
+	border: 1px dashed black;
+	padding: 5px;
+	border-radius: 10px;
+	font-family: sans;
+	margin: 10px;
+}
+
+.edges line {
+	opacity: 0.1;
+	stroke: black;
+	pointer-events: none;
+}
+
+.edges line.highlight {
+	opacity: 0.5;
+	stroke-width: 2;
+}
+
+.nodes circle {
+	fill: limegreen;
+	cursor: grab;
+}
+
+.nodes .dragging {
+	cursor: grabbing;
+	pointer-events: none;
+}
+
+.nodes circle.highlight {
+	stroke-width: 3;
+	stroke: black;
+}
+
+.nodes circle.tag {
+	fill: dodgerblue;
+}
+
+.labels text {
+	display: none;
+	font-family: helvetica;
+	font-size: smaller;
+	pointer-events: none;
+	text-shadow: 1px 1px limegreen;
+}
+
+.labels text.tag {
+	text-anchor: end;
+	text-shadow: 1px 1px lightblue;
+}
+
